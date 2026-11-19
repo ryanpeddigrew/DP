@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>David’s Job-Search Kit</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A walkthrough of David’s portfolio website, his three positioning lanes, and the Pitch Desk cover letter app.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Job Kit">
+<meta name="theme-color" content="#005C47">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+--bg:#F7F0E2;
+--ink:#10231D;
+--mute:#4D5F57;
+--card:#FFFDF8;
+--line:#10231D;
+--line-soft:#DDD2BC;
+--or:#FD550A;
+--gr:#005C47;
+--li:#E0F354;
+--sel-bg:#E0F354;
+--sel-ink:#10231D;
+--shadow:4px 4px 0 #10231D;
+--shadow-lg:7px 7px 0 #10231D;
+box-sizing:border-box;
+padding-top:env(safe-area-inset-top,0px);
+padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+:root:not([data-theme="light"]){
+color-scheme:dark;
+--bg:#0B1713;
+--ink:#F7F0E2;
+--mute:#A8B9B0;
+--card:#132822;
+--line:#F7F0E2;
+--line-soft:#26473D;
+--shadow:4px 4px 0 #050C0A;
+--shadow-lg:7px 7px 0 #050C0A;
+}
+}
+:root[data-theme="dark"]{
+color-scheme:dark;
+--bg:#0B1713;
+--ink:#F7F0E2;
+--mute:#A8B9B0;
+--card:#132822;
+--line:#F7F0E2;
+--line-soft:#26473D;
+--shadow:4px 4px 0 #050C0A;
+--shadow-lg:7px 7px 0 #050C0A;
+}
+
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:
+radial-gradient(circle at 12% 4%, rgba(253,85,10,.09), transparent 36%),
+radial-gradient(circle at 90% 18%, rgba(224,243,84,.12), transparent 38%),
+var(--bg);
+color:var(--ink);
+font:400 17px/1.62 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+-webkit-text-size-adjust:100%;
+}
+
+::selection{background:var(--sel-bg);color:var(--sel-ink)}
+
+.wrap{max-width:820px;margin:0 auto;padding:0 18px 72px}
+
+/* HERO */
+.hero{
+position:relative;
+background:var(--gr);
+color:#F7F0E2;
+margin:0 -18px 28px;
+padding:36px 24px 32px;
+border-bottom:3px solid var(--line);
+border-radius:0 0 32px 32px;
+box-shadow:var(--shadow-lg);
+overflow:hidden;
+}
+.hero::after{
+content:"KIT 01";
+position:absolute;
+right:-10px;
+bottom:-22px;
+font:400 112px/1 Anton,Impact,"Arial Narrow",sans-serif;
+color:rgba(224,243,84,.11);
+letter-spacing:.04em;
+pointer-events:none;
+user-select:none;
+}
+
+.wordmark{
+--wm:#F7F0E2;
+display:inline-flex;
+align-items:center;
+gap:10px;
+margin:0 0 14px;
+padding:6px 12px 6px 0;
+color:var(--wm);
+font:400 clamp(17px,4.6vw,22px)/1 Anton,Impact,"Arial Narrow",sans-serif;
+letter-spacing:.18em;
+text-transform:uppercase;
+white-space:nowrap;
+border-bottom:2px solid rgba(224,243,84,.45);
+}
+.wordmark .swap{position:relative;display:inline-block}
+.wordmark .swap::after{
+content:"O";
+position:absolute;
+left:0;right:0;top:0;
+text-align:center;
+color:var(--li);
+opacity:0;
+pointer-events:none;
+}
+.wordmark .swap.on{color:transparent}
+.wordmark .swap.on::after{opacity:1;animation:pg-flick var(--d,200ms) steps(1,end) both}
+@keyframes pg-flick{
+0%{opacity:0}
+10%{opacity:1;transform:translateX(.04em)}
+26%{opacity:.55;transform:none}
+40%{opacity:1}
+100%{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+.wordmark .swap::after{display:none}
+.wordmark .swap.on{color:inherit}
+}
+
+.hero h1{
+font:400 clamp(46px,12.5vw,82px)/.92 Anton,Impact,"Arial Narrow",sans-serif;
+color:var(--li);
+margin:0 0 16px;
+text-transform:uppercase;
+letter-spacing:.01em;
+max-width:13ch;
+}
+.hero p{
+position:relative;
+z-index:1;
+margin:0 0 22px;
+color:#F7F0E2;
+font-size:17.5px;
+max-width:60ch;
+}
+
+.steps{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:10px}
+.steps a{
+background:var(--li);
+color:#10231D;
+text-decoration:none;
+font-weight:700;
+font-size:14px;
+letter-spacing:.02em;
+border:2px solid #10231D;
+border-radius:999px;
+padding:9px 15px;
+box-shadow:2px 2px 0 #10231D;
+transition:transform .14s ease,box-shadow .14s ease,background .14s ease;
+}
+.steps a:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 #10231D;background:#ecff68}
+.steps a:active{transform:translate(1px,1px);box-shadow:1px 1px 0 #10231D}
+
+/* SECTIONS & TYPE */
+section{margin:42px 0}
+.num{
+display:inline-block;
+background:var(--or);
+color:#10231D;
+font:700 12px/1 "DM Sans",sans-serif;
+letter-spacing:.1em;
+text-transform:uppercase;
+border:2px solid var(--line);
+border-radius:999px;
+padding:6px 12px;
+margin-bottom:10px;
+box-shadow:2px 2px 0 var(--line);
+}
+h2{
+font:400 clamp(30px,7.5vw,44px)/1 Anton,Impact,"Arial Narrow",sans-serif;
+text-transform:uppercase;
+letter-spacing:.01em;
+margin:0 0 10px;
+}
+h3{font-size:18px;font-weight:700;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:var(--mute);margin:0 0 18px;font-size:16.5px}
+
+.card{
+background:var(--card);
+border:2px solid var(--line);
+border-radius:22px;
+padding:20px;
+margin-bottom:16px;
+box-shadow:var(--shadow);
+}
+
+.quote{
+background:var(--or);
+color:#10231D;
+border:2px solid var(--line);
+border-radius:22px;
+padding:22px 22px 24px;
+font:400 clamp(24px,5.5vw,32px)/1.12 Anton,Impact,"Arial Narrow",sans-serif;
+text-transform:uppercase;
+margin-bottom:16px;
+box-shadow:var(--shadow-lg);
+}
+.quote small{
+display:inline-block;
+background:#10231D;
+color:var(--li);
+font:700 11px/1 "DM Sans",sans-serif;
+letter-spacing:.12em;
+border-radius:999px;
+padding:5px 10px;
+margin-bottom:12px;
+}
+
+/* THREE LANES GRID */
+.paths{display:grid;gap:14px}
+@media(min-width:650px){.paths{grid-template-columns:repeat(3,1fr)}}
+.path{
+position:relative;
+background:var(--card);
+border:2px solid var(--line);
+border-top:10px solid var(--gr);
+border-radius:20px;
+padding:16px 16px 18px;
+box-shadow:var(--shadow);
+transition:transform .16s ease,box-shadow .16s ease;
+}
+.path:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-lg)}
+.path:nth-child(2){border-top-color:var(--or)}
+.path:nth-child(3){border-top-color:var(--li)}
+.path .tag{
+display:inline-block;
+font:700 11px/1 "DM Sans",sans-serif;
+letter-spacing:.1em;
+text-transform:uppercase;
+color:var(--mute);
+margin-bottom:8px;
+}
+.path p{margin:0;font-size:15px;color:var(--mute)}
+
+/* SIX STEPS PILLS */
+.six{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;counter-reset:step}
+.six span{
+counter-increment:step;
+background:var(--li);
+color:#10231D;
+border:2px solid var(--line);
+font-weight:700;
+font-size:13.5px;
+border-radius:999px;
+padding:7px 13px;
+box-shadow:2px 2px 0 var(--line);
+}
+.six span::before{content:counter(step) " · ";opacity:.7}
+
+/* TABS & PANELS */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.tab{
+font:700 15px/1.2 "DM Sans",sans-serif;
+background:var(--card);
+color:var(--ink);
+border:2px solid var(--line);
+border-radius:14px;
+padding:12px 15px;
+cursor:pointer;
+flex:1 1 auto;
+box-shadow:2px 2px 0 var(--line);
+transition:transform .12s ease,box-shadow .12s ease,background .12s ease;
+}
+.tab:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--line)}
+.tab[aria-selected="true"]{
+background:var(--sel-bg);
+color:var(--sel-ink);
+box-shadow:4px 4px 0 var(--line);
+transform:translate(-1px,-1px);
+}
+
+.panel .head{
+font:400 clamp(22px,5vw,28px)/1.12 Anton,Impact,"Arial Narrow",sans-serif;
+text-transform:uppercase;
+margin:0 0 8px;
+color:var(--ink);
+}
+.panel h3{
+margin-top:16px;
+color:var(--gr);
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:.08em;
+}
+:root[data-theme="dark"] .panel h3{color:var(--li)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .panel h3{color:var(--li)}}
+.panel p,.panel ul{margin:0 0 6px;font-size:16px}
+.panel ul{padding-left:20px}
+.panel li{margin-bottom:4px}
+
+/* ORDERED LIST & CTA */
+ol.how{padding-left:22px;margin:0}
+ol.how li{margin-bottom:12px;padding-left:4px}
+ol.how li::marker{font-weight:700;color:var(--or)}
+
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+background:var(--or);
+color:#10231D;
+font:700 17px/1 "DM Sans",sans-serif;
+text-decoration:none;
+border:2px solid var(--line);
+border-radius:16px;
+padding:16px 24px;
+margin:8px 0 6px;
+box-shadow:4px 4px 0 var(--line);
+transition:transform .14s ease,box-shadow .14s ease,background .14s ease;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--line);background:#ff6926}
+.btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--line)}
+.btn::after{content:"↗";font-size:19px;line-height:1}
+
+.outs{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+@media(min-width:540px){.outs{grid-template-columns:1fr 1fr}}
+.outs div{
+background:var(--bg);
+border:2px solid var(--line);
+border-radius:16px;
+padding:14px 15px;
+box-shadow:2px 2px 0 var(--line);
+}
+.outs b{display:block;font-size:16px;margin-bottom:3px}
+.outs span{font-size:14px;color:var(--mute);line-height:1.38;display:block}
+
+.note{font-size:14.5px;color:var(--mute);margin:12px 0 0}
+
+/* CHECKLIST */
+.check label{
+display:flex;
+gap:14px;
+align-items:flex-start;
+padding:13px 4px;
+border-top:1px solid var(--line-soft);
+cursor:pointer;
+transition:background .12s ease;
+}
+.check label:hover{background:rgba(224,243,84,.08)}
+.check label:first-of-type{border-top:0}
+.check input{
+width:24px;
+height:24px;
+accent-color:#005C47;
+flex:none;
+margin-top:2px;
+cursor:pointer;
+}
+.check input:checked + span{
+text-decoration:line-through;
+opacity:.65;
+}
+.bar{
+height:14px;
+background:var(--bg);
+border:2px solid var(--line);
+border-radius:999px;
+overflow:hidden;
+margin:4px 0 10px;
+}
+.bar i{
+display:block;
+height:100%;
+width:0;
+background:linear-gradient(90deg,var(--gr),var(--or));
+transition:width .3s ease;
+}
+
+footer{
+text-align:center;
+color:var(--mute);
+font-size:14px;
+font-weight:500;
+margin-top:48px;
+padding-top:20px;
+border-top:1px solid var(--line-soft);
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+<p class="wordmark" role="img" aria-label="David Peddigrew"><span aria-hidden="true">DAVID PEDDIGR<span class="swap">E</span>W</span></p>
+<h1>David’s job-search kit</h1>
+<p>Hi David. Ryan put together three things to help you land interviews: a portfolio website, three positioning lanes that each answer a different employer question, and Pitch Desk, an app that writes your cover letters, video resume scripts and case studies. This page walks you through all of it.</p>
+<nav class="steps" aria-label="Walkthrough steps">
+<a href="#website">1 · The website</a>
+<a href="#lanes">2 · Your three lanes</a>
+<a href="#pitchdesk">3 · Pitch Desk app</a>
+<a href="#checklist">4 · Your checklist</a>
+</nav>
+</header>
+
+<section id="website">
+<span class="num">Step 01</span>
+<h2>The website: one home base, three paths</h2>
+<p class="lead">Three separate sites would look scattered. One main site with three clear paths looks intentional. The homepage says who you are, then sends each employer down the path that fits them.</p>
+<div class="quote"><small>Homepage headline idea</small><br>Digital marketer building growth through sports, performance marketing, and channel ownership.</div>
+<div class="paths">
+<div class="path"><span class="tag">Lane 01</span><h3>Sports + Digital Marketing</h3><p>For sports brands, teams, agencies, athletic brands and fan-growth roles.</p></div>
+<div class="path"><span class="tag">Lane 02</span><h3>Performance Marketing + Digital Growth</h3><p>For DTC, e-commerce, SaaS, agencies and growth-marketing roles.</p></div>
+<div class="path"><span class="tag">Lane 03</span><h3>Channel Ownership + Revenue Planning</h3><p>For marketing manager, growth lead, channel manager and strategy or operator roles.</p></div>
+</div>
+<div class="card" style="margin-top:16px">
+<h3>Every case study follows the same six steps</h3>
+<p class="lead" style="margin:0">Only the emphasis changes from one path to the next. The same win can appear on more than one path, reframed for that audience.</p>
+<div class="six"><span>Business problem</span><span>My role</span><span>Strategy</span><span>Execution</span><span>Result</span><span>What I learned</span></div>
+<p class="note">One rule for all of it: only claim what you can back up in an interview.</p>
+</div>
+</section>
+
+<section id="lanes">
+<span class="num">Step 02</span>
+<h2>Your three lanes</h2>
+<p class="lead">Each lane answers one question an employer is asking. Tap a lane to see what leads it, what we already have, and what we still need from you.</p>
+<div class="tabs" role="tablist">
+<button class="tab" role="tab" aria-selected="true" data-p="p1">Sports + Digital</button>
+<button class="tab" role="tab" aria-selected="false" data-p="p2">Performance + Growth</button>
+<button class="tab" role="tab" aria-selected="false" data-p="p3">Channel + Revenue</button>
+</div>
+
+<div class="card panel" id="p1" role="tabpanel">
+<p class="head">Turning sports moments into audience growth and commercial impact.</p>
+<p><b>Employer question:</b> Can he connect sports, audience, content and commercial growth?</p>
+<h3>What leads this lane</h3>
+<p>Your Skechers sport projects and your sports work background, shown alongside real marketing mechanics so it reads as a marketer who knows sport, not a sports résumé.</p>
+<h3>Already on your LinkedIn</h3>
+<ul>
+<li>Bachelor of Sports Management, Brock University</li>
+<li>Fan engagement at NBA All-Star Weekend 2016</li>
+<li>Media and communications internships with Ontario basketball organizations</li>
+<li>Assistant Men’s Basketball Coach and Video Coordinator, Durham College</li>
+</ul>
+<h3>Still needed from you</h3>
+<p>A short write-up of each Skechers sport project: what it was, what you owned, and any results such as reach, engagement or sales.</p>
+</div>
+
+<div class="card panel" id="p2" role="tabpanel" hidden>
+<p class="head">Performance marketing that turns spend into measurable growth.</p>
+<p><b>Employer question:</b> Can he drive measurable acquisition, conversion and revenue?</p>
+<h3>What leads this lane</h3>
+<p>The actual tools and platforms you’ve worked in, the spend levels you’ve managed, and metrics such as ROAS, CPA, CAC and conversion rate. Case studies run Objective, Strategy, Execution, Result.</p>
+<h3>Already on your LinkedIn</h3>
+<ul>
+<li>E-Commerce Lead at Skechers since February 2021</li>
+<li>Digital marketing roles at Eden Advertising &amp; Interactive, ChizComm and Counter Tax Lawyers</li>
+<li>Google Data Analytics certificate, October 2024</li>
+</ul>
+<h3>Still needed from you</h3>
+<p>The full list of platforms and tools you’ve used, and the spend levels you’ve managed. If a number is confidential, a range works fine.</p>
+</div>
+
+<div class="card panel" id="p3" role="tabpanel" hidden>
+<p class="head">Owning marketing channels from plan to revenue impact.</p>
+<p><b>Employer question:</b> Can he own a channel or marketing function end to end and tie it to business outcomes?</p>
+<h3>What leads this lane</h3>
+<p>Your work with C-suite and VP-level staff in the US, a scope closer to a Director, launching other countries, and cross-team leadership. This is the most senior-looking lane: it shifts the story from “I ran ads” to “I owned outcomes.”</p>
+<h3>Already on your LinkedIn</h3>
+<ul>
+<li>Solely led digital operations for the Skechers brand in Canada as E-Commerce Lead</li>
+</ul>
+<h3>Still needed from you</h3>
+<p>Examples with scope: budget, stakeholders, which countries you launched, timeline, and the outcome. Use words like owned, planned, forecasted, managed and delivered, but only where you can back them up.</p>
+</div>
+</section>
+
+<section id="pitchdesk">
+<span class="num">Step 03</span>
+<h2>Pitch Desk: your cover letter and resume app</h2>
+<p class="lead">Paste a job posting. Pitch Desk checks your vault of resumes and wins, picks what to include for that specific job, and drafts the piece.</p>
+<div class="outs">
+<div><b>Cover letter</b><span>3–4 tight paragraphs aimed at an interview</span></div>
+<div><b>Video resume</b><span>A 75–90 second script to read to camera</span></div>
+<div><b>Case study</b><span>One win, framed for the role</span></div>
+<div><b>Portfolio piece</b><span>A project card for your website</span></div>
+</div>
+<div class="card">
+<h3>How to use it</h3>
+<ol class="how">
+<li><b>Fill your vault.</b> Open the Vault tab and add every resume version, past cover letters, win stories with numbers, and your tools and spend levels.</li>
+<li><b>Paste the job posting text.</b> Pitch Desk can’t open links from inside the app, so copy the posting text and paste it in.</li>
+<li><b>Pick what to make and tap Build it.</b> You get a match plan showing what was pulled from your vault and why, plus an editable draft. Anything in [ADD: …] brackets is a detail missing from your vault.</li>
+</ol>
+</div>
+<a class="btn" id="open" href="https://claude.ai/artifact/9nKB3H4LNKgz63QgHu7aT3" rel="noopener">Open Pitch Desk</a>
+<p class="note">You’ll need to be signed in to Claude, because Pitch Desk runs on your own Claude account. Your vault stays private to your login.</p>
+
+<div class="card" style="margin-top:18px">
+<h3>Put it on your Home Screen</h3>
+<div class="tabs" role="tablist" style="margin-top:10px">
+<button class="tab" role="tab" aria-selected="true" data-h="h1">iPhone</button>
+<button class="tab" role="tab" aria-selected="false" data-h="h2">Android</button>
+</div>
+<ol class="how" id="h1">
+<li>Tap Open Pitch Desk above and let it load in Safari.</li>
+<li>Tap the Share button, the square with an arrow pointing up.</li>
+<li>Scroll down and tap Add to Home Screen.</li>
+<li>Tap Add. Pitch Desk now opens from your Home Screen like any other app.</li>
+</ol>
+<ol class="how" id="h2" hidden>
+<li>Tap Open Pitch Desk above and let it load in Chrome.</li>
+<li>Tap the three-dot menu in the top corner.</li>
+<li>Tap Add to Home screen, or Install app if you see it.</li>
+<li>Confirm. Pitch Desk now opens from your Home Screen.</li>
+</ol>
+</div>
+</section>
+
+<section id="checklist">
+<span class="num">Step 04</span>
+<h2>Your checklist</h2>
+<p class="lead">This is everything that makes the site and Pitch Desk strong. Add the written items to your Pitch Desk vault, and send Ryan the screenshots and links for the website. Your ticks are saved on this device.</p>
+<div class="card check">
+<div class="bar"><i id="prog"></i></div>
+<p class="note" id="progtxt" style="margin:0 0 8px"></p>
+<label><input type="checkbox"><span>Every version of your resume</span></label>
+<label><input type="checkbox"><span>Past cover letters you’re proud of</span></label>
+<label><input type="checkbox"><span>Write-ups of your Skechers sport projects, with results</span></label>
+<label><input type="checkbox"><span>Your sports work background and roles</span></label>
+<label><input type="checkbox"><span>The full list of platforms and tools you’ve used</span></label>
+<label><input type="checkbox"><span>Spend levels you’ve managed (ranges are fine)</span></label>
+<label><input type="checkbox"><span>Examples of working with C-suite and VP staff in the US</span></label>
+<label><input type="checkbox"><span>Country launches you’ve worked on</span></label>
+<label><input type="checkbox"><span>Cross-team leadership examples: who, how many, what outcome</span></label>
+<label><input type="checkbox"><span>Screenshots, links or samples of work you can show</span></label>
+</div>
+</section>
+
+<footer>Built by Ryan for David.</footer>
+</div>
+
+<script>
+function wire(attr,ids){
+var btns=document.querySelectorAll("["+attr+"]");
+btns.forEach(function(b){b.addEventListener("click",function(){
+btns.forEach(function(x){x.setAttribute("aria-selected",x===b)});
+ids.forEach(function(id){document.getElementById(id).hidden=(id!==b.getAttribute(attr))});
+})});
+}
+wire("data-p",["p1","p2","p3"]);
+wire("data-h",["h1","h2"]);
+
+var boxes=document.querySelectorAll(".check input"),KEY="kit_checks";
+function paint(){
+var n=0;boxes.forEach(function(b){if(b.checked)n++});
+document.getElementById("prog").style.width=(n/boxes.length*100)+"%";
+document.getElementById("progtxt").textContent=n+" of "+boxes.length+" gathered";
+}
+try{var saved=JSON.parse(localStorage.getItem(KEY)||"[]");boxes.forEach(function(b,i){b.checked=!!saved[i]})}catch(e){}
+boxes.forEach(function(b){b.addEventListener("change",function(){
+try{localStorage.setItem(KEY,JSON.stringify(Array.prototype.map.call(boxes,function(x){return x.checked})))}catch(e){}
+paint();
+})});
+paint();
+
+/* Wordmark Easter egg: the final E in PEDDIGREW briefly flickers to an O (PEDDIGROW). */
+(function(){
+var swap=document.querySelector(".wordmark .swap");
+if(!swap)return;
+var CHANCE=0.05,CHECK_MIN=3500,CHECK_MAX=4500,HOLD_MIN=150,HOLD_MAX=250;
+var mq=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):null;
+var timer=null,onScreen=true;
+function calm(){return mq&&mq.matches}
+function glitch(){
+var d=HOLD_MIN+Math.round(Math.random()*(HOLD_MAX-HOLD_MIN));
+swap.style.setProperty("--d",d+"ms");
+swap.classList.add("on");
+setTimeout(function(){swap.classList.remove("on")},d);
+}
+function tick(){
+timer=null;
+if(Math.random()<CHANCE)glitch();
+start();
+}
+function start(){
+if(timer||calm()||document.hidden||!onScreen)return;
+timer=setTimeout(tick,CHECK_MIN+Math.random()*(CHECK_MAX-CHECK_MIN));
+}
+function stop(){if(timer){clearTimeout(timer);timer=null}}
+document.addEventListener("visibilitychange",function(){document.hidden?stop():start()});
+if(mq&&mq.addEventListener)mq.addEventListener("change",function(){if(calm()){stop();swap.classList.remove("on")}else start()});
+if("IntersectionObserver" in window){
+new IntersectionObserver(function(entries){onScreen=entries[0].isIntersecting;onScreen?start():stop()}).observe(swap);
+}
+start();
+})();
+</script>
+</body>
+</html>
+
+Suggestions updated
